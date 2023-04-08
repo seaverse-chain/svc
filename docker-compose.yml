@@ -1,0 +1,16 @@
+version: "3.6"
+
+services:
+  geth:
+    container_name: atlantis
+    build: .
+    restart: unless-stopped
+    volumes:
+      - ./data:/data
+    ports:
+      - "10010:8545"
+      - "10011:8546"
+    env_file:
+      - .env
+    environment:
+      - TZ=Asia/Shanghai

@@ -28,12 +28,12 @@ exec geth \
   --unlock="$ALLOC_ADDRESS_WITHOUT_0X" \
   --password="$GETH_DATA_DIR/password" \
   --mine --miner.etherbase="$ALLOC_ADDRESS_WITHOUT_0X"\
-  --networkid="$CHAIN_ID" --nodiscover --maxpeers=3 \
+  --networkid="$CHAIN_ID" --nodiscover --port=30303 --maxpeers=3 \
   --http --http.addr=0.0.0.0 --http.port=8545 \
-  --http.api=eth,net,web3 \
+  --http.api=debug,net,eth,shh,web3,txpool \
   --http.corsdomain='*' --http.vhosts='*' \
   --ws --ws.addr=0.0.0.0 --ws.port=8546 \
-  --ws.api=eth,net,web3 \
+  --ws.api=eth,net,web3,network,debug,txpool \
   --graphql \
   --graphql.corsdomain='*' --graphql.vhosts='*' \
   --syncmode=full --gcmode=archive \

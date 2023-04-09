@@ -33,7 +33,6 @@ contract WSEA {
     }
 
     function withdraw(uint256 wad) public {
-        require(balanceOf[msg.sender] >= wad);
         balanceOf[msg.sender] -= wad;
         payable(msg.sender).transfer(wad);
         emit Withdrawal(msg.sender, wad);
@@ -54,11 +53,9 @@ contract WSEA {
         address dst,
         uint256 wad
     ) public returns (bool) {
-        require(balanceOf[src] >= wad);
         if (
             src != msg.sender && allowance[src][msg.sender] != type(uint256).max
         ) {
-            require(allowance[src][msg.sender] >= wad);
             allowance[src][msg.sender] -= wad;
         }
         balanceOf[src] -= wad;

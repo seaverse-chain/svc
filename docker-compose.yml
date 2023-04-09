@@ -10,6 +10,7 @@ services:
     ports:
       - "10010:8545"
       - "10011:8546"
+      - "10012:30303"
     env_file:
       - .env
     environment:
